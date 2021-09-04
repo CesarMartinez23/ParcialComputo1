@@ -18,7 +18,7 @@ namespace AppResumenAlumno
         public static List<UserClases> users = new List<UserClases>();
         public static int Reintentos = 3;
 
-        public static void Main()
+        public static void Alumn()
         {
             while (true)
             {
@@ -31,9 +31,8 @@ namespace AppResumenAlumno
 
             }
 
-            Console.WriteLine("Lo intentaste 3 veces");
+            Console.WriteLine("Lo intentaste 3 veces, lo sentimos, vuelve a intentarlo nuevamente, le consultaremos al admin.");
             Console.ReadKey();
-
 
         }
 
@@ -58,7 +57,7 @@ namespace AppResumenAlumno
                 else
                 {
                     Reintentos--;
-                    Console.WriteLine("No se encontro en lso registros. Lo has intentado: " + Reintentos + " veces");
+                    Console.WriteLine("No se encontro en los registros. Lo has intentado: " + Reintentos + " veces.");
                 }
             }
         }
@@ -70,12 +69,15 @@ namespace AppResumenAlumno
 
         static string[] logindatos(string[] data)
         {
-            //Console.Clear();
+            Console.WriteLine("\n");
+            Console.WriteLine("******************************");
             Console.WriteLine("Bienvenido al Inicio de Sesion");
+            Console.WriteLine("******************************");
+            Console.WriteLine("\n");
             Console.Write("Nombre de Usuario: ");
             string user = Console.ReadLine();
             data[0] = user;
-            Console.Write("Password:");
+            Console.Write("Password: ");
             string password = Console.ReadLine();
             data[1] = password;
 
@@ -90,19 +92,29 @@ namespace AppResumenAlumno
 
         static void menuAdmin()
         {
-            Console.WriteLine("Menu");
-            Console.WriteLine("1- Registrar Usuarios");
-            Console.WriteLine("2- Crear archivos");
-            Console.WriteLine("3- Borrar Archivo");
-            Console.WriteLine("4- Salir");
+            Console.WriteLine("\n");
+            Console.WriteLine("**********");
+            Console.WriteLine("Menu Admin");
+            Console.WriteLine("**********");
+            Console.WriteLine("\n");
+            Console.WriteLine("1- Registrar Usuarios.");
+            Console.WriteLine("2- Crear Archivos.");
+            Console.WriteLine("3- Borrar Archivo.");
+            Console.WriteLine("4- Salir.");
             int opcion = Convert.ToInt32(Console.ReadLine());
             switch (opcion)
             {
                 case 1:
-                    Console.WriteLine("Registrar Usuario");
-                    Console.WriteLine("Nombre de Usuario:");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("**********************************");
+                    Console.WriteLine("Bienvenido al Registro de Usuarios");
+                    Console.WriteLine("**********************************");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("--------Registrar Usuario--------");
+                    Console.WriteLine("\n");
+                    Console.Write("Nombre de Usuario: ");
                     string nombre = Console.ReadLine();
-                    Console.WriteLine("Password:");
+                    Console.Write("Password: ");
                     string contrasenia = Console.ReadLine();
                     users.Add(new UserClases() { user = nombre, clave = contrasenia });
 
@@ -111,25 +123,27 @@ namespace AppResumenAlumno
                     break;
                 case 2:
                     
-                    Console.WriteLine("El archivo se creo correctamente.");
+                    Console.WriteLine("Los archivos se crearon correctamente en la ruta establecida.");
+                    Console.WriteLine("\n");
                     break;
                 case 3:
+
                     break;
 
                 case 4:
-
                     MetodoLogin();
-
-
                     break;
             }
         }
 
         static void menuOtros()
         {
-            Console.WriteLine("Menu");
-            Console.WriteLine("1- Ver Archivos");
-            Console.WriteLine("2- Salir");
+            Console.WriteLine("**********");
+            Console.WriteLine("Menu Otros");
+            Console.WriteLine("**********");
+            Console.WriteLine("\n");
+            Console.WriteLine("1- Ver Archivos.");
+            Console.WriteLine("2- Salir.");
             int opcion = Convert.ToInt32(Console.ReadLine());
             switch (opcion)
             {
@@ -137,6 +151,7 @@ namespace AppResumenAlumno
            
                     break;
                 case 2:
+                    MetodoLogin();
                     break;
             }
         }
