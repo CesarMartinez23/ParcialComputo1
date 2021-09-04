@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AppResumenAlumno
 {
@@ -15,11 +16,30 @@ namespace AppResumenAlumno
         }
 
         public static List<UserClases> users = new List<UserClases>();
+        public static int Reintentos = 3;
 
-        public static void Alumn()
+        public static void Main()
+        {
+            while (true)
+            {
+                if (Reintentos == 0)
+                {
+                    break;
+                }
+
+                MetodoLogin();
+
+            }
+
+            Console.WriteLine("Lo intentaste 3 veces");
+            Console.ReadKey();
+
+
+        }
+
+        static void MetodoLogin()
         {
             bool typeUser;
-
             string[] usuario = new string[2];
             usuario = logindatos(usuario);
 
@@ -31,32 +51,31 @@ namespace AppResumenAlumno
             }
             else
             {
-                menuOtros();
+                if (search(usuario[0], usuario[1]))
+                {
+                    menuOtros();
+                }
+                else
+                {
+                    Reintentos--;
+                    Console.WriteLine("No se encontro en lso registros. Lo has intentado: " + Reintentos + " veces");
+                }
             }
-            Console.ReadKey();
         }
-
 
         static bool adminUser(string user, string password)
         {
-            if (user == "admin" && password == "123")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return user == "admin" && password == "123";
         }
 
         static string[] logindatos(string[] data)
         {
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine("Bienvenido al Inicio de Sesion");
-            Console.WriteLine("Nombre de Usuario:");
+            Console.Write("Nombre de Usuario: ");
             string user = Console.ReadLine();
             data[0] = user;
-            Console.WriteLine("Password:");
+            Console.Write("Password:");
             string password = Console.ReadLine();
             data[1] = password;
 
@@ -91,13 +110,17 @@ namespace AppResumenAlumno
 
                     break;
                 case 2:
+                    
+                    Console.WriteLine("El archivo se creo correctamente.");
                     break;
                 case 3:
                     break;
 
                 case 4:
-                    string[] usuario = new string[2];
-                    usuario = logindatos(usuario);
+
+                    MetodoLogin();
+
+
                     break;
             }
         }
@@ -111,12 +134,12 @@ namespace AppResumenAlumno
             switch (opcion)
             {
                 case 1:
-
+           
                     break;
                 case 2:
                     break;
             }
         }
-
+       
     }
 }
