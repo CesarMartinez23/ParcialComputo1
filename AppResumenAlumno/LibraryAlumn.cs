@@ -152,6 +152,7 @@ namespace AppResumenAlumno
                     break;
                 case 3:
                     MostrarArchivos();
+                    EliminarArchivo(SeleccionarArchivo("Seleccione le numero que corresponde al archivo que desee eliminar."));
                     break;
 
                 case 4:
@@ -219,6 +220,15 @@ namespace AppResumenAlumno
                 ind++;
             }
 
+        }
+
+        static void EliminarArchivo(int opc)
+        {
+            var archivos = getFiles();
+
+            File.Delete(getFileByIndex(opc - 1));
+
+            Console.WriteLine("El archivo se ha eliminado correctamente.");
         }
 
         static int SeleccionarArchivo(string texto)
