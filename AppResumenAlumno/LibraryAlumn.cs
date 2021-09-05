@@ -151,7 +151,7 @@ namespace AppResumenAlumno
                     Console.WriteLine("\n");
                     break;
                 case 3:
-
+                    MostrarArchivos();
                     break;
 
                 case 4:
@@ -172,7 +172,7 @@ namespace AppResumenAlumno
             switch (opcion)
             {
                 case 1:
-           
+                    LeerArchivo();
                     break;
                 case 2:
                     MetodoLogin();
@@ -202,6 +202,58 @@ namespace AppResumenAlumno
                 Console.WriteLine($"El archivo {fileName} ya existe en la ruta.");
             }
         }
+
+        static void MostrarArchivos()
+        {
+            int ind = 1;
+            var archivos = Directory.GetFiles(_FilesPath);
+
+            Console.WriteLine("*******************");
+            Console.WriteLine("Listado de archivos");
+            Console.WriteLine("*******************");
+
+            foreach (var archivo in archivos)
+            {
+                var archivoName = archivo.Split('\\');
+                Console.WriteLine($"{ind}- " + archivoName[archivoName.Length - 1]);
+                ind++;
+            }
+
+        }
+
+        static int SeleccionarArchivo(string texto)
+        {
+            Console.WriteLine(texto);
+            int opc = int.Parse(Console.ReadLine());
+
+            return opc;
+        }
+
+        static void LeerArchivo()
+        {
+            MostrarArchivos();
+            int opc = SeleccionarArchivo("Seleccione el numero que corresponde al archivo que desee visualizar.");
+
+            var archivos = getFiles();
+
+            string readText = File.ReadAllText(getFileByIndex(opc - 1));
+            Console.WriteLine(readText);
+
+        }
+
+        static string[] getFiles()
+        {
+            return Directory.GetFiles(_FilesPath);
+
+        }
+
+        static string getFileByIndex(int index)
+        {
+            var files = getFiles();
+
+            return files[index];
+        }
+
 
     }
 }
