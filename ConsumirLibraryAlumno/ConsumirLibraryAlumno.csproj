@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ConsumirLibraryAlumno.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AppResumenAlumno">
       <HintPath>..\AppResumenAlumno\bin\Debug\AppResumenAlumno.dll</HintPath>
